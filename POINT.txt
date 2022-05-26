@@ -1,0 +1,45 @@
+# コンポーネントとpropsの関係
+ - コンポーネント: 画面要素の全部 or 一部
+ - props: コンポーネントに渡される引数的なもの
+
+# propsの渡し方（2パターン）
+ - 1.特定の名称(color, messageなど)をつけて渡す。開始タグのみ。
+ - 2.<コンポーネント名>のタグで囲った中身をchildrenとして渡す。開始タグと終了タグの両方が必要。
+
+# プロパティの慣例記法
+ - プロパティのkeyとvalueの値が同じときは、valueは省略可
+
+# Stateとは
+ - 各コンポーネントが持つ状態。Stateが変更されると再レンダリングされる。条件によって動的に変わる部分をStateとして表現する。
+
+# Stateの定義
+ - const [stateの変数名, stateを更新する関数名] = useState(初期値の設定可);
+   ex. 変数num(初期値0)を更新するstate
+       const[num, setNum] = useState(0);
+
+# Reactにおける画面遷移の仕組み
+ - 特定条件の下で、コンポーネントを再レンダリングして差分を反映させる
+ - 再レンダリングのタイミング（例） 
+ 　 1. stateが更新されるとき
+ 　 2. propsの中身が変更されるとき
+  　3. 親コンポーネント(App.jsx)が再レンダリングされるとき、子コンポーネント(ColorfulMessage.jsx)も追従して再レンダリングされる
+
+# useEffectの使い方
+
+# default export と named export
+ [パターン1]
+   const 関数名 = () => { 
+    関数処理; 
+    return ();
+  };
+   export default 関数名;
+
+  -> import 関数名 from ...
+
+ [パターン2] 推奨！（関数名のタイポにエラーを返してくれる）
+   export const 関数名 = () => { 
+    関数処理; 
+    return ();
+  };
+
+  -> import { 関数名 } from ...
